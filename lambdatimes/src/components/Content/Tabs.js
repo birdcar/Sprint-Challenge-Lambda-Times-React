@@ -8,9 +8,9 @@ const Tabs = props => {
     <div className="tabs">
       <div className="topics">
         <span className="title">TRENDING TOPICS:</span>
-        {tabs.map(tab => (
+        {tabs.map((tab, i) => (
           <Tab
-            key={Date.now()}
+            key={i}
             tab={tab}
             selectedTab={selectedTab}
             selectTabHandler={selectTabHandler}
