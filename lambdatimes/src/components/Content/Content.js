@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Tabs from './Tabs';
-import Cards from './Cards';
+import Tabs from "./Tabs";
+import Cards from "./Cards";
 
 // Importing our tab and card data. No need to change anything here.
-import { tabData, cardData } from '../../data';
+import { tabData, cardData } from "../../data";
 
 export default class Content extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'all',
+      selected: "all",
       tabs: [],
       cards: []
     };
@@ -19,18 +19,18 @@ export default class Content extends Component {
   componentDidMount() {
     this.setState({
       tabs: tabData,
-      cards: cardData,
-    })
+      cards: cardData
+    });
   }
 
   changeSelected = tab => {
     this.setState({
-      selected: tab,
-    })
+      selected: tab
+    });
   };
 
   filterCards = () => {
-    this.state.selected === 'all'
+    return this.state.selected === "all"
       ? this.state.cards
       : this.state.cards.filter(card => card.tab === this.state.selected);
   };
@@ -38,10 +38,11 @@ export default class Content extends Component {
   render() {
     return (
       <div className="content-container">
-        <Tabs 
+        <Tabs
           tabs={this.state.tabs}
           selectedTab={this.state.selected}
-          selectTabHandler={this.changeSelected} />
+          selectTabHandler={this.changeSelected}
+        />
         <Cards cards={this.filterCards()} />
       </div>
     );
